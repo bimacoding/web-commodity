@@ -129,36 +129,6 @@ class Ajax extends CI_Controller {
 		}
 	}
 
-   	function get_videos_kat_anak()
-   	{
-
-		$id = $this->input->get('anak');
-		$data = $this->model_utama->view_join_where('t_videos','t_kategori','id_kategori',array('t_videos.id_videos'=>$id,'publish'=>'Y'))->row_array();
-	    $output = $data;
-	    header("Content-Type: application/json; charset=UTF-8");
-	    echo json_encode($output);
-   	}
-
-   	function get_videos_kat_remaja()
-   	{
-
-		$id = $this->input->get('remaja');
-		$data = $this->model_utama->view_join_where('t_videos','t_kategori','id_kategori',array('t_videos.id_videos'=>$id,'publish'=>'Y'))->row_array();
-	    $output = $data;
-	    header("Content-Type: application/json; charset=UTF-8");
-	    echo json_encode($output);
-   	}
-
-   	function get_videos_kat_ortu()
-   	{
-
-		$id = $this->input->get('ortu');
-		$data = $this->model_utama->view_join_where('t_videos','t_kategori','id_kategori',array('t_videos.id_videos'=>$id,'publish'=>'Y'))->row_array();
-	    $output = $data;
-	    header("Content-Type: application/json; charset=UTF-8");
-	    echo json_encode($output);
-   	}
-
 }
 
 /* End of file Ajax.php */
