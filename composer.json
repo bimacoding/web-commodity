@@ -1,0 +1,7 @@
+{
+    "require": {
+        "chriskacerguis/codeigniter-restserver": "^3.1",
+        "dompdf/dompdf": "^0.8.5",
+        "google/apiclient": "^2.7"
+    }
+}
