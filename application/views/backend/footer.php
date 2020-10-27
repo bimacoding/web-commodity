@@ -1,1 +1,1 @@
-<footer class="footer text-center"> <?=date('Y')?> &copy; Development by <?=title()?>. </footer>
+<footer class="footer text-center"> <?=date('Y')?> &copy; Development by Bima Coding. </footer>

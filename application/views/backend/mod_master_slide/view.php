@@ -33,7 +33,7 @@
                             <td><button type="button" class="badge badge-success" data-toggle="modal" data-target="#exampleModalLong<?=$no?>">lihat</button></td>
                             <td>
                                 <center>
-                                    <a href="<?=base_url().'dashboard/ubah_slide/'.$row['id_slide'];?>" class="badge badge-success">
+                                    <a href="<?=base_url().'slide/ubah_slide/'.$row['id_slide'];?>" class="badge badge-success">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                 </center>

@@ -5,7 +5,7 @@ class Warta extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Semua Data Warta';
+		$data['title'] = 'Semua Data File';
 		$data['record'] = $this->model_app->view_join_one('t_warta','t_kategori','id_kategori','id_warta','DESC');
 		$this->template->load('backend/template','backend/mod_master_warta/view',$data);
 
@@ -31,7 +31,7 @@ class Warta extends CI_Controller {
 				redirect('warta','refresh');
 			}
 		}else{
-			$data['title'] = 'Tambah Data Warta';
+			$data['title'] = 'Tambah Data File';
 			$data['kategori'] = $this->model_app->view_where('t_kategori',array('aktif'=>'Y','jenis'=>'warta'))->result_array();
 			$this->template->load('backend/template','backend/mod_master_warta/add',$data);
 		}
@@ -58,7 +58,7 @@ class Warta extends CI_Controller {
 				redirect('warta','refresh');
 			}
 		}else{
-			$data['title'] = 'Ubah Data Warta';
+			$data['title'] = 'Ubah Data File';
 			$data['row'] = $this->model_app->edit('t_warta',array('id_warta'=>$id))->row_array();
 			$data['kategori'] = $this->model_app->view_where('t_kategori',array('aktif'=>'Y','jenis'=>'warta'))->result_array();
 			$this->template->load('backend/template','backend/mod_master_warta/edit',$data);

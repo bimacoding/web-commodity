@@ -9,7 +9,7 @@
                     <?=title()?>
                 </span>
                 <span class="hidden-lg hidden-xl">
-                    GKI
+                    ADM
                 </span>
             </b>
         </a>

@@ -57,11 +57,29 @@ class Banner extends CI_Controller {
 	{
 		cek_session_user();
 		if (isset($_POST['submit'])) {
-			$data = array(
-						'seo_banner' => seo_title($this->input->post('nama_banner')),
-						'nama_banner'=> cetak($this->input->post('nama_banner')),
-						'aktif' 	 => $this->input->post('aktif') 
-					);
+			$config['upload_path'] = 'assets/uploads/banner/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size']  = '2000'; //Kb
+			$this->load->library('upload', $config);
+			$this->upload->do_upload('gambar_banner');
+			$hasil = $this->upload->data();
+			if ($hasil['file_name']!=='') {
+				$data = array(
+							'nama_banner' => $this->db->escape_str($this->input->post('nama_banner')),
+							'gambar_banner' => $hasil['file_name'],
+							'posisi_banner'=> 'home',
+							'link_banner' => $this->input->post('link_banner'),
+							'aktif' => $this->db->escape_str($this->input->post('aktif')),
+						); 
+			}else{
+				$data = array(
+							'nama_banner' => $this->db->escape_str($this->input->post('nama_banner')),
+							'gambar_banner' => 'no-images.jpg',
+							'posisi_banner'=> 'home',
+							'link_banner' => $this->input->post('link_banner'),
+							'aktif' => $this->db->escape_str($this->input->post('aktif')),
+						);
+			}
 			$q = $this->model_app->insert('t_banner',$data);
 			if ($q) {
 				$this->session->set_flashdata('success', 'Data berhasil diproses!');
@@ -82,11 +100,29 @@ class Banner extends CI_Controller {
 		cek_session_user();
 		$id =$this->uri->segment(3);
 		if (isset($_POST['submit'])) {
-			$data = array(
-						'seo_banner' => seo_title($this->input->post('nama_banner')),
-						'nama_banner'=> cetak($this->input->post('nama_banner')),
-						'aktif' => $this->input->post('aktif') 
-					);
+			$config['upload_path'] = 'assets/uploads/banner/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size']  = '2000'; //Kb
+			$this->load->library('upload', $config);
+			$this->upload->do_upload('gambar_banner');
+			$hasil = $this->upload->data();
+			if ($hasil['file_name']!=='') {
+				$data = array(
+							'nama_banner' => $this->db->escape_str($this->input->post('nama_banner')),
+							'gambar_banner' => $hasil['file_name'],
+							'posisi_banner'=> 'home',
+							'link_banner' => $this->input->post('link_banner'),
+							'aktif' => $this->db->escape_str($this->input->post('aktif')),
+						); 
+			}else{
+				$data = array(
+							'nama_banner' => $this->db->escape_str($this->input->post('nama_banner')),
+							'gambar_banner' => 'no-images.jpg',
+							'posisi_banner'=> 'home',
+							'link_banner' => $this->input->post('link_banner'),
+							'aktif' => $this->db->escape_str($this->input->post('aktif')),
+						);
+			}
 			$where = array('id_banner'=>$this->input->post('id'));
 			$q = $this->model_app->update('t_banner',$data,$where);
 			if ($q) {

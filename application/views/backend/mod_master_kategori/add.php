@@ -19,7 +19,7 @@
                     <select class="form-control" name="jenis">
                         <option value="">-- Pilih --</option>
                         <option value="artikel"> artikel </option>
-                        <option value="warta"> warta </option>
+                        <option value="produk"> produk </option>
                         <option value="video"> video </option>
                         <option value="download"> download </option>
                     </select>

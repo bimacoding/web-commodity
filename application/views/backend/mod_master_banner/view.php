@@ -10,6 +10,7 @@
     <?php } ?>
     <div class="white-box">
         <h3 class="box-title m-b-0"><?=$title?>
+            <a href="<?=base_url().'banner/tambah_banner'?>" class="badge badge-primary float-right">Tambah</a>
         </h3>
         
         <div class="table-responsive">
@@ -17,7 +18,7 @@
                 <thead>
                     <tr>
                         <th style="width: 25px">No</th>
-                        <th>Nama slide</th>
+                        <th>Nama banner</th>
                         <th>Gambar</th>
                         <th style="width: 50px">Aksi</th>
                     </tr>
@@ -29,11 +30,11 @@
                     ?>
                         <tr>
                             <td><center><?=$no?></center></td>
-                            <td><?=$row['nama_slide']?></td>
+                            <td><?=$row['nama_banner']?></td>
                             <td><button type="button" class="badge badge-success" data-toggle="modal" data-target="#exampleModalLong<?=$no?>">lihat</button></td>
                             <td>
                                 <center>
-                                    <a href="<?=base_url().'siteman/ubah_slide/'.$row['id_slide'];?>" class="badge badge-success">
+                                    <a href="<?=base_url().'banner/ubah_banner/'.$row['id_banner'];?>" class="badge badge-success">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                 </center>
@@ -44,7 +45,7 @@
                           <div class="modal-dialog modal-md" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle"><?=$row['nama_slide']?>
+                                <h5 class="modal-title" id="exampleModalLongTitle"><?=$row['nama_banner']?>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
@@ -52,7 +53,7 @@
                                 
                               </div>
                               <div class="modal-body">
-                                <img src="<?=base_url().'assets/uploads/slide/'.$row['gambar_slide']?>" class="rounded mx-auto d-block img-thumbnail" alt="<?=$row['nama_slide']?>" style="width: 50%">
+                                <img src="<?=base_url().'assets/uploads/banner/'.$row['gambar_banner']?>" class="rounded mx-auto d-block img-thumbnail" alt="<?=$row['nama_banner']?>" style="width: 50%">
                               </div>
                             </div>
                           </div>
