@@ -4,8 +4,6 @@
             <div><img src="<?=base_url().'assets/uploads/users/'.$this->session->userdata('foto');?>" alt="user-img" class="img-circle"></div> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $this->session->userdata('nama'); ?> <span class="caret"></span></a>
             <ul class="dropdown-menu animated flipInY">
                 <li><a href="<?=base_url().'siteman/logout'?>"><i class="fa fa-power-off"></i> Logout</a></li>
-                <li><a href="<?=base_url('set_language/switch/english')?>"><i class="fa fa-power-off"></i> English</a></li>
-                <li><a href="<?=base_url('set_language/switch/indonesia')?>"><i class="fa fa-power-off"></i> Indonesia</a></li>
             </ul>
         </div>
     </div>

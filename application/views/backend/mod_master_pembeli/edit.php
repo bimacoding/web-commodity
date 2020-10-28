@@ -2,18 +2,18 @@
     <div class="white-box">
         <h3 class="box-title m-b-0"><?=$title?></h3>
         <p class="text-muted m-b-30 font-13"> Pastikan semua kolom terisi. </p>
-        <?php $attributes = array('class'=>'form-horizontal','role'=>'form','autocomplete'=>'off'); echo form_open_multipart('users/ubah_users',$attributes); ?>
+        <?php $attributes = array('class'=>'form-horizontal','role'=>'form','autocomplete'=>'off'); echo form_open_multipart('pembeli/ubah_pembeli',$attributes); ?>
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <div class="form-group row">
                 <label for="example-text-input" class="col-2 col-form-label">NIK</label>
                 <div class="col-10">
-                    <input type="hidden" name="id" value="<?=$row['id_users']?>">
-                    <input class="form-control" type="number" name="nopeg" value="<?=$row['nopeg']?>">
+                    <input type="hidden" name="id" value="<?=$row['id_pembeli']?>">
+                    <input class="form-control" type="number" name="nik" value="<?=$row['nik']?>">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Nama users</label>
+                <label for="example-text-input" class="col-2 col-form-label">Nama pembeli</label>
                 <div class="col-10">
                     <input class="form-control" type="text" name="nama" value="<?=$row['nama']?>">
                 </div>
@@ -29,7 +29,7 @@
             <div class="form-group row">
                 <label for="example-text-input" class="col-2 col-form-label">Password</label>
                 <div class="col-10">
-                    <input class="form-control" type="password" name="password" value="<?=$row['nopeg']?>">
+                    <input class="form-control" type="password" name="password" value="<?=$row['nik']?>">
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
             <div class="form-group row">
                 <label for="example-text-input" class="col-2 col-form-label">Foto Saat ini</label>
                 <div class="col-10">
-                    <img src="<?=base_url().'assets/uploads/users/'.$row['foto']?>" class="img-thumbnail align-middle" width="100">
+                    <img src="<?=base_url().'assets/uploads/pembeli/'.$row['foto']?>" class="img-thumbnail align-middle" width="100">
                 </div>
             </div>
 
@@ -58,19 +58,6 @@
                 <label for="example-text-input" class="col-2 col-form-label">Foto</label>
                 <div class="col-10">
                     <input class="form-control" type="file" name="foto">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Level</label>
-                <div class="col-10">
-                    <select class="form-control" name="level">
-                        <option value="<?=$row['level']?>"> <?=$row['level']?> </option>
-                        <option value="penjual"> penjual </option>
-                        <option value="pembeli"> pembeli </option>
-                        <option value="admin"> admin </option>
-                    </select>
-                    <small class="text-muted">default user</small>
                 </div>
             </div>
 
@@ -87,7 +74,7 @@
             </div>
 
             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="submit">Kirim</button>
-            <a href="<?=base_url().'users'?>" class="btn btn-inverse waves-effect waves-light">Batal</a>
+            <a href="<?=base_url().'pembeli'?>" class="btn btn-inverse waves-effect waves-light">Batal</a>
         <?php echo form_close(); ?>
     </div>
 </div>

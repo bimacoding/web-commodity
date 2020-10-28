@@ -67,7 +67,7 @@ class pembeli extends CI_Controller {
 						'nohp' => $this->db->escape_str($this->input->post('nohp')),
 						'alamat' => $this->db->escape_str($this->input->post('alamat')),
 						'foto' => $hasil['file_name'],
-						'organisasi' => $this->input->post('organisasi'),
+						'nib' => $this->input->post('nib'),
 						'kta'=> $this->input->post('kta'),
 						'qrcode' => $image_name,
 						'blokir'=>$this->db->escape_str($this->input->post('blokir'))
@@ -141,7 +141,7 @@ class pembeli extends CI_Controller {
 						'nohp' => $this->db->escape_str($this->input->post('nohp')),
 						'alamat' => $this->db->escape_str($this->input->post('alamat')),
 						'foto' => $hasil['file_name'],
-						'organisasi' => $this->input->post('organisasi'),
+						'nib' => $this->input->post('nib'),
 						'kta'=> $this->input->post('kta'),
 						'qrcode' => $image_name,
 						'blokir'=>$this->db->escape_str($this->input->post('blokir'))
@@ -232,7 +232,7 @@ class pembeli extends CI_Controller {
 						'nohp' => $this->db->escape_str($this->input->post('nohp')),
 						'alamat' => $this->db->escape_str($this->input->post('alamat')),
 						'foto' => $hasil['file_name'],
-						'organisasi' => $this->input->post('organisasi'),
+						'nib' => $this->input->post('nib'),
 						'kta'=> $this->input->post('kta'),
 						'qrcode' => $image_name
 					);

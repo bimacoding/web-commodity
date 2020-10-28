@@ -10,7 +10,7 @@
     <?php } ?>
     <div class="white-box">
         <h3 class="box-title m-b-0"><?=$title?>
-            <a href="<?=base_url().'users/tambah_users'?>" class="badge badge-primary float-right">Tambah</a>
+            <a href="<?=base_url().'pembeli/tambah_pembeli'?>" class="badge badge-primary float-right">Tambah</a>
         </h3>
         
         <div class="table-responsive">
@@ -23,7 +23,6 @@
                         <th>Nama User</th>
                         <th>Email</th>
                         <th>No Hp</th>
-                        <th>Level</th>
                         <th style="width: 50px">Aksi</th>
                     </tr>
                 </thead>
@@ -34,18 +33,17 @@
                     ?>
                         <tr>
                             <td><center><?=$no?></center></td>
-                            <td><img src="<?=base_url().'assets/uploads/users/'.$row['foto']?>" class="img-circle img-responsive" width="50"></td>
-                            <td><?=$row['nopeg']?></td>
+                            <td><img src="<?=base_url().'assets/uploads/pembeli/'.$row['foto']?>" class="img-circle img-responsive" width="50"></td>
+                            <td><?=$row['nik']?></td>
                             <td><?=$row['nama']?></td>
                             <td><?=$row['email']?></td>
                             <td><?=$row['nohp']?></td>
-                            <td><?=$row['level']?></td>
                             <td>
                                 <center>
-                                    <a href="<?=base_url().'users/ubah_users/'.$row['id_users'];?>" class="badge badge-success">
+                                    <a href="<?=base_url().'pembeli/ubah_pembeli/'.$row['id_pembeli'];?>" class="badge badge-success">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    <a href="#" class="badge badge-danger" links="<?=base_url().'users/hapus_users/'.$row['id_users'];?>" id="confirm<?=$no?>" onclick="confirms(this.id)">
+                                    <a href="#" class="badge badge-danger" links="<?=base_url().'pembeli/hapus_pembeli/'.$row['id_pembeli'];?>" id="confirm<?=$no?>" onclick="confirms(this.id)">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </center>

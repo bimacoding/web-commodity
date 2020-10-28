@@ -1,8 +1,8 @@
 
 <div class="col-md-4 col-xs-12">
     <div class="white-box">
-        <?php if ($this->session->userdata('nik')==$row['nopeg']) { ?>
-            <div class="user-bg"> <img alt="<?=$row['nama']?>" src="<?=base_url().'assets/uploads/users/'.$row['foto']?>" width="100%"> </div>
+        <?php if ($this->session->userdata('nik')==$row['nik']) { ?>
+            <div class="user-bg"> <img alt="<?=$row['nama']?>" src="<?=base_url().'assets/uploads/penjual/'.$row['foto']?>" width="100%"> </div>
             <div class="user-btm-box">
                 <!-- .row -->
                 <div class="row text-center m-t-10">
@@ -10,7 +10,7 @@
                         <p><?=$row['nama']?></p>
                     </div>
                     <div class="col-md-6"><strong>NIK</strong>
-                        <p><?=$row['nopeg']?></p>
+                        <p><?=$row['nik']?></p>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -34,7 +34,7 @@
                 </div>
             </div>
         <?php }else{ ?>
-            <div class="user-bg"> <img alt="<?=$row['nama']?>" src="<?=base_url().'assets/uploads/users/'.$row['foto']?>" width="100%"> </div>
+            <div class="user-bg"> <img alt="<?=$row['nama']?>" src="<?=base_url().'assets/uploads/penjual/'.$row['foto']?>" width="100%"> </div>
             <div class="user-btm-box">
                 <!-- .row -->
                 <div class="row text-center m-t-10">
@@ -48,19 +48,19 @@
 </div>
 <div class="col-md-8 col-xs-12">
     <div class="white-box">
-        <?php if ($this->session->userdata('nik')==$row['nopeg']) { ?>
-            <?php $attributes = array('class'=>'form-horizontal','role'=>'form','autocomplete'=>'off'); echo form_open_multipart('users/ubah_users',$attributes); ?>
+        <?php if ($this->session->userdata('nik')==$row['nik']) { ?>
+            <?php $attributes = array('class'=>'form-horizontal','role'=>'form','autocomplete'=>'off'); echo form_open_multipart('penjual/ubah_penjual',$attributes); ?>
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                 <div class="form-group row">
                     <label for="example-text-input" class="col-3 col-form-label">NIK</label>
                     <div class="col-9">
-                        <input type="hidden" name="id" value="<?=$row['id_users']?>">
-                        <input class="form-control" type="number" name="nopeg" value="<?=$row['nopeg']?>" readonly>
+                        <input type="hidden" name="id" value="<?=$row['id_penjual']?>">
+                        <input class="form-control" type="number" name="nik" value="<?=$row['nik']?>" readonly>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="example-text-input" class="col-3 col-form-label">Nama users</label>
+                    <label for="example-text-input" class="col-3 col-form-label">Nama penjual</label>
                     <div class="col-9">
                         <input class="form-control" type="text" name="nama" value="<?=$row['nama']?>">
                     </div>
@@ -76,7 +76,7 @@
                 <div class="form-group row">
                     <label for="example-text-input" class="col-3 col-form-label">Password</label>
                     <div class="col-9">
-                        <input class="form-control" type="password" name="password" value="<?=$row['nopeg']?>">
+                        <input class="form-control" type="password" name="password" value="<?=$row['nik']?>">
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@
                 <div class="form-group row">
                     <label for="example-text-input" class="col-3 col-form-label">Foto Saat ini</label>
                     <div class="col-9">
-                        <img src="<?=base_url().'assets/uploads/users/'.$row['foto']?>" class="img-thumbnail align-middle" width="100">
+                        <img src="<?=base_url().'assets/uploads/penjual/'.$row['foto']?>" class="img-thumbnail align-middle" width="100">
                     </div>
                 </div>
 
@@ -105,19 +105,6 @@
                     <label for="example-text-input" class="col-3 col-form-label">Foto</label>
                     <div class="col-9">
                         <input class="form-control" type="file" name="foto">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="example-text-input" class="col-3 col-form-label">Level</label>
-                    <div class="col-9">
-                        <select class="form-control" name="Level">
-                            <option value="<?=$row['level']?>"> <?=$row['level']?> </option>
-                            <option value="penjual"> penjual </option>
-                            <option value="pembeli"> pembeli </option>
-                            <option value="admin"> admin </option>
-                        </select>
-                        <small class="text-muted">default user</small>
                     </div>
                 </div>
 
@@ -140,7 +127,7 @@
             <div class="form-group row">
                 <label for="example-text-input" class="col-3 col-form-label">NIK</label>
                 <div class="col-9">
-                    : <?=$row['nopeg']?>
+                    : <?=$row['nik']?>
                 </div>
             </div>
 
@@ -168,7 +155,7 @@
             <div class="form-group row">
                 <label for="example-text-input" class="col-3 col-form-label">Foto Saat ini</label>
                 <div class="col-9">
-                    : <img src="<?=base_url().'assets/uploads/users/'.$row['foto']?>" class="img-thumbnail align-middle" width="100">
+                    : <img src="<?=base_url().'assets/uploads/penjual/'.$row['foto']?>" class="img-thumbnail align-middle" width="100">
                 </div>
             </div>
         <?php } ?>
