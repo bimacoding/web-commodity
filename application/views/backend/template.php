@@ -403,12 +403,6 @@
 
     <!--Style Switcher -->
     <script src="<?=base_url()?>assets/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
-    
-    <script type="text/javascript" src="<?=base_url()?>assets/js/filereader.js"></script>
-
-    <script type="text/javascript" src="<?=base_url()?>assets/js/qrcodelib.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>assets/js/webcodecamjs.js"></script>
-    <script type="text/javascript" src="<?=base_url()?>assets/js/main.js"></script>
 </body>
 
 </html>

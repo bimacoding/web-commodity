@@ -1,5 +1,4 @@
-<?php error_reporting(1) ?>
-<?php echo $this->lang->line('name_product'); ?>
+
 <div class="container">
     <div class="col-sm-12">
         <div class="white-box">

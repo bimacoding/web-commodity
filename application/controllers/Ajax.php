@@ -129,6 +129,103 @@ class Ajax extends CI_Controller {
 		}
 	}
 
+	function getProduct()
+	{
+		error_reporting(0);
+		$search = $_POST['search']['value']; // Ambil data yang di ketik user pada textbox pencarian
+		$limit = $_POST['length']; // Ambil data limit per page
+		$start = $_POST['start']; // Ambil data start
+
+		$sql = $this->model_app->view_join_once('t_product','t_kategori','id_kategori','id_product','DESC');
+		$sql_count = $sql->num_rows(); // Hitung data yg ada pada query $sql
+
+		$query = "SELECT a.*, b.* FROM t_product a 
+				  LEFT JOIN t_kategori b ON a.id_kategori=b.id_kategori
+				  WHERE (a.nama_product LIKE '%".$search."%' OR
+					   a.asal_product LIKE '%".$search."%' OR
+					   a.harga_product LIKE '%".$search."%' OR
+					   a.berat_product LIKE '%".$search."%' OR
+					   b.nama_kategori LIKE '%".$search."%')";
+
+		$order_index = $_POST['order'][0]['column']; // Untuk mengambil index yg menjadi acuan untuk sorting
+		$order_field = $_POST['columns'][$order_index]['data']; // Untuk mengambil nama field yg menjadi acuan untuk sorting
+		$order_ascdesc = $_POST['order'][0]['dir']; // Untuk menentukan order by "ASC" atau "DESC"
+
+		$order = " ORDER BY ".$order_field." ".$order_ascdesc;
+
+		$sql_data = $this->db->query($query.$order." LIMIT ".$limit." OFFSET ".$start); 
+
+		$sql_filter = $this->db->query($query); 
+		$sql_filter_count = $sql_filter->num_rows(); 
+		$data = $sql_data->result_array(); 
+		$data_detil =array();
+		foreach ($data as $keys) {
+
+			$data_detil[] = array(
+				'id_product'   => $keys['id_product'],
+				'nama_product' => $keys['nama_product'],
+				'asal_product' => $keys['asal_product'],
+				'harga_product'=> $keys['harga_product'],
+				'kg_product'   => $keys['berat_product'],
+				'kat_product'  => getNamaKat($keys['id_kategori']),
+			);
+		}
+
+		$callback = array(
+			'csrf_test_name'=>$this->security->get_csrf_hash(),
+		    'draw'=>$_POST['draw'], // Ini dari datatablenya
+		    'recordsTotal'=>$sql_count,
+		    'recordsFiltered'=>$sql_filter_count,
+		    'data'=>$data_detil
+		);
+		header('Content-Type: application/json');
+		echo json_encode($callback);
+	}
+
+
+	function delImages($id,$doc)
+	{
+		$idDoc    = $doc;
+		$indexArr = $id;
+		$getVal = $this->model_app->edit('t_product',['id_product'=>$indexArr])->row_array();
+		$arr = explode('|', $getVal['foto_product']);
+		$cek = count($arr);
+		if ($cek>1) {
+			$newData = '';
+			foreach ($arr as $key => $value) {
+				if ($key !== $indexArr) {
+					$newData .= $value.'|';
+				}
+			}
+			$q = $this->model_app->update('t_product',['foto_product'=>substr($newData,0,-1)],['id_product'=>$idDoc]);
+			if ($q) {
+				echo 1;
+			}else{
+				echo 0;
+			}
+		}
+	}
+
+	function tes()
+	{
+		$idDoc    = 1;
+		$indexArr = 1;
+		$getVal = $this->model_app->edit('t_product',['id_product'=>$indexArr])->row_array();
+		$arr = explode('|', $getVal['foto_product']);
+		$cek = count($arr);
+		if ($cek>1) {
+			$newData = '';
+			foreach ($arr as $key => $value) {
+				if ($key !== $indexArr) {
+					$newData .= $value.'|';
+				}
+			}
+			echo $newData;
+		}else{
+			echo "0";
+		}
+	}
+
 }
 
 /* End of file Ajax.php */

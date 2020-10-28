@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] 				= 'home';
 
+$route['product'] 							= 'admin/product';
+$route['product/(:any)'] 					= 'admin/product/$1';
+$route['product/(:any)/(:num)'] 			= 'admin/product/$1/$2';
 $route['kategori'] 							= 'admin/kategori';
 $route['kategori/(:any)'] 					= 'admin/kategori/$1';
 $route['kategori/(:any)/(:num)'] 			= 'admin/kategori/$1/$2';

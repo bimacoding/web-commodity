@@ -96,6 +96,13 @@
         
     }
 
+    function getNamaKat($k){
+        $ci = & get_instance();
+        $nm = $ci->db->query("SELECT nama_kategori FROM t_kategori WHERE id_kategori = '".$k."' ORDER BY id_kategori DESC LIMIT 1")->row_array();
+        return $nm['nama_kategori'];
+        
+    }
+
     function get_name_front($k){
         $ci = & get_instance();
         $nm = $ci->db->query("SELECT nama_menu FROM t_front_menu WHERE id_menu = '".$k."' ORDER BY id_menu DESC LIMIT 1")->row_array();

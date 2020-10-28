@@ -56,7 +56,11 @@ $config['csrf_regenerate'] = TRUE;
 
 $config['csrf_exclude_uris'] = array(
         'ajax/getHistory/[0-9]+',
-        'ajax/getHistory/[a-z]+'
+        'ajax/getHistory/[a-z]+',
+        'ajax/getProduct/(:any)',
+        'ajax/getProduct',
+        'admin/product/upload_foto_product',
+        'admin/product/delete_foto_product'
 );
 
 $config['compress_output'] = FALSE;

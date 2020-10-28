@@ -18,6 +18,7 @@ class Kategori extends CI_Controller {
 			$data = array(
 						'seo_kategori' => seo_title($this->input->post('nama_kategori')),
 						'nama_kategori'=> cetak($this->input->post('nama_kategori')),
+						'jenis'=> cetak($this->input->post('jenis')),
 						'aktif' => $this->input->post('aktif') 
 					);
 			$q = $this->model_app->insert('t_kategori',$data);
@@ -43,6 +44,7 @@ class Kategori extends CI_Controller {
 			$data = array(
 						'seo_kategori' => seo_title($this->input->post('nama_kategori')),
 						'nama_kategori'=> cetak($this->input->post('nama_kategori')),
+						'jenis'=> cetak($this->input->post('jenis')),
 						'aktif' => $this->input->post('aktif') 
 					);
 			$where = array('id_kategori'=>$this->input->post('id'));
