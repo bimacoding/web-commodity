@@ -22,14 +22,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <link href="<?=base_url()?>template/css/style.css" rel="stylesheet">
+    
 	<!-- SPECIFIC CSS -->
     <link href="<?=base_url()?>template/css/home_1.css" rel="stylesheet">
+    <link href="<?=base_url()?>template/css/cheatsheet.css" rel="stylesheet">
     <link href="<?=base_url()?>template/css/blog.css" rel="stylesheet">
     <link href="<?=base_url()?>template/css/contact.css" rel="stylesheet">
+    <link href="<?=base_url()?>template/css/listing.css" rel="stylesheet">
+    <link href="<?=base_url()?>template/css/product_page.css" rel="stylesheet">
+    <link href="<?=base_url()?>template/css/cart.css" rel="stylesheet">
+    <link href="<?=base_url()?>template/css/style.css" rel="stylesheet">
     <!-- YOUR CUSTOM CSS -->
     <link href="<?=base_url()?>template/css/custom.css" rel="stylesheet">
-    <link href="<?=base_url()?>template/css/cheatsheet.css" rel="stylesheet">
     <link href="<?=base_url()?>template/css/grt-youtube-popup.css" rel="stylesheet">
     
 
@@ -86,31 +90,9 @@
     
     
     <!-- SPECIFIC SCRIPTS -->
+    <script src="<?=base_url()?>template/js/lazyload.min.js"></script>
     <script src="<?=base_url()?>template/js/carousel-home.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $('.img_containers .owl-carousel').owlCarousel({
-                items: 1,
-                  loop: true,
-                  nav: false,
-                  dots:true,
-                    responsive:{
-                    0:{
-                         dots:true
-                    },
-                    767:{
-                        dots:true
-                    },
-                    768:{
-                         dots:true
-                    }
-                  },
-                  autoplay:true,
-                  autoplayTimeout:5000,
-                  autoplayHoverPause:true
-            })
-        });
-    </script>
+    <script src="<?=base_url()?>template/js/carousel_with_thumbs.js"></script>
 
 </body>
 </html>

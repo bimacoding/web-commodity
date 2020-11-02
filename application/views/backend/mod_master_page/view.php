@@ -31,7 +31,7 @@
                         <tr>
                             <td><center><?=$no?></center></td>
                             <td><?=html_entity_decode(htmlspecialchars_decode($row['judul_page']))?></td>
-                            <td><a href="<?=base_url().'page/detil/'.$row['seo_page']?>" target="_blank"><?=base_url().'page/detil/'.$row['seo_page']?></a></td>
+                            <td><a href="<?=base_url().'hal/detil/'.$row['seo_page']?>" target="_blank"><?=base_url().'page/detil/'.$row['seo_page']?></a></td>
                             <td>
                                 <center>
                                     <a href="<?=base_url().'page/ubah_page/'.$row['id_page'];?>" class="badge badge-success">

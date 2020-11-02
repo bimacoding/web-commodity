@@ -45,7 +45,8 @@ class Ajax extends CI_Controller {
 		if ($this->input->get('link')!='') {
 			$link = $this->input->get('link');
 		}elseif ($this->input->get('page')!='') {
-			$link = 'page/detil/'.$this->input->get('page');
+			// $link = 'hal/detil/'.$this->input->get('page');
+			$link = 'hal/'.$this->input->get('page');
 		}elseif ($this->input->get('kategori')) {
 			$link = 'kategori/list/'.$this->input->get('kategori');
 		}

@@ -52,6 +52,9 @@ class Siteman extends CI_Controller {
 	{
 		cek_session_user();
 		$data['title'] = "Dashboard admin";
+		$data['penjual'] = $this->model_app->view_where('t_penjual',array('blokir'=>'N'));
+		$data['customer'] = $this->model_app->view_where('t_pembeli',array('blokir'=>'N'));
+		$data['product'] = $this->model_app->view_where('t_product',array('publish_product'=>'Y'));
 		$this->template->load('backend/template','backend/main',$data);
 	}
 

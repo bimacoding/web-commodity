@@ -249,8 +249,7 @@ class Penjual extends CI_Controller {
 			}
 		}else{
 			$data['title'] = 'Profile Saya';
-			$data['row'] = $this->model_app->edit('t_penjual',array('nik'=>$id))->row_array();
-			$data['penjuals'] = $this->model_app->view_where_order('t_penjual',array('blokir'=>'N'),'id_penjual','DESC');
+			$data['row'] = $this->model_app->view_where_order('t_penjual',array('blokir'=>'N'),'id_penjual','DESC')->row_array();
 			$this->template->load('backend/template','backend/mod_master_penjual/profile',$data);
 		}
 		

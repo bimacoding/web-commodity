@@ -249,8 +249,7 @@ class pembeli extends CI_Controller {
 			}
 		}else{
 			$data['title'] = 'Profile Saya';
-			$data['row'] = $this->model_app->edit('t_pembeli',array('nik'=>$id))->row_array();
-			$data['pembelis'] = $this->model_app->view_where_order('t_pembeli',array('blokir'=>'N'),'id_pembeli','DESC');
+			$data['row'] = $this->model_app->view_where_order('t_pembeli',array('blokir'=>'N'),'id_pembeli','DESC')->row_array();
 			$this->template->load('backend/template','backend/mod_master_pembeli/profile',$data);
 		}
 		

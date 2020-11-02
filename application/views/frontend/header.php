@@ -4,7 +4,7 @@
         <div class="row small-gutters">
             <div class="col-xl-3 col-lg-3 d-lg-flex align-items-center">
                 <div id="logo">
-                    <a href="<?=base_url()?>"><img src="<?=base_url()?>assets/images/frontend_logo_gki.png" alt="" width="100" height="50"></a>
+                    <a href="<?=base_url()?>"><img src="<?=logo()?>" alt="" width="150" height="37"></a>
                 </div>
             </div>
             <nav class="col-xl-6 col-lg-7">
@@ -18,38 +18,42 @@
                 <!-- Mobile menu button -->
                 <div class="main-menu">
                     <div id="header_menu">
-                        <a href="<?=base_url()?>"><img src="<?=base_url()?>assets/images/frontend_logo_gki.png" alt=""></a>
+                        <a href="<?=base_url()?>"><img src="<?=logo();?>" alt=""></a>
                         <a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
                     </div>
                     <ul>
-                        <?php  
+                        <!-- <//?php  
                             // $session = $this->session->userdata('level');
                             $session = 'user';
                             $cek = menu_manager_frontend($session);
                             if ($cek !== 'null') {
-                                $menus = json_decode($cek);
-                                $html = '';
-                                foreach ($menus as $key) {
-                                    if ($key->submenu==null) {
-                                        $html .="<li> 
-                                                    <a href='".base_url().$key->link."'>" .$key->menu. "</a>
-                                                </li>";
-                                    }else{
-                                        $html .="<li class='submenu'> 
-                                                        <a href='javascript:void(0);' class='show-submenu'>" .$key->menu. "</a>
-                                                        <ul>";
-                                                    foreach ($key->submenu as $key2) {
-                                                       $html .=" <li> <a href='".base_url().$key2->sublink."'>" .$key2->submenu. "</a> </li>";
-                                                    }
-                                               $html .="</ul>
-                                                 </li>";
-                                    }
-                                }
-                                echo $html;
+                                
                             }else{
                                 $html = '';
                                 echo $html;
                             }
+                        ?> -->
+                        <?php
+                        $cek = menu_user();
+                        $menus = json_decode($cek);
+                        $html = '';
+                        foreach ($menus as $key) {
+                            if ($key->submenu==null) {
+                                $html .="<li> 
+                                            <a href='".base_url().$key->link."'>" .$key->menu. "</a>
+                                        </li>";
+                            }else{
+                                $html .="<li class='submenu'> 
+                                                <a href='javascript:void(0);' class='show-submenu'>" .$key->menu. "</a>
+                                                <ul>";
+                                            foreach ($key->submenu as $key2) {
+                                               $html .=" <li> <a href='".base_url().$key2->sublink."'>" .$key2->submenu. "</a> </li>";
+                                            }
+                                       $html .="</ul>
+                                         </li>";
+                            }
+                        }
+                        echo $html;
                         ?>
                     </ul>
                 </div>

@@ -26,13 +26,13 @@
 					<div class="col-md-6">
 						<article class="blog">
 							<figure>
-								<a href="<?=base_url().'post/detil/'.$pst['seo_post']?>"><img src="<?=base_url().'assets/thumbnail/medium/'.$pst['thumbnail_post']?>" alt="">
+								<a href="<?=base_url().'artikel/detil/'.$pst['seo_post']?>"><img src="<?=base_url().'assets/thumbnail/medium/'.$pst['thumbnail_post']?>" alt="">
 									<div class="preview"><span>Selengkapnya</span></div>
 								</a>
 							</figure>
 							<div class="post_info">
 								<small><?=$pst['nama_kategori']?> - <?=$this->mylibrary->tgl_indo($pst['created_on'])?></small>
-								<h2><a href="<?=base_url().'post/detil/'.$pst['seo_post']?>"><?=html_entity_decode(htmlspecialchars_decode(str_replace(['&lpar;','&rpar;','&comma;'], ['[',']',','], $pst['judul_post'])))?></a></h2>
+								<h2><a href="<?=base_url().'artikel/detil/'.$pst['seo_post']?>"><?=html_entity_decode(htmlspecialchars_decode(str_replace(['&lpar;','&rpar;','&comma;'], ['[',']',','], $pst['judul_post'])))?></a></h2>
 								<?=cetak_meta($pst['isi_post'],0,200).'....'?>
 								<!-- <ul>
 									<li>

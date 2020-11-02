@@ -40,6 +40,8 @@ $route['banner'] 							= 'admin/banner';
 $route['banner/(:any)'] 					= 'admin/banner/$1';
 $route['banner/(:any)/(:num)'] 				= 'admin/banner/$1/$2';
 
+$route['hal/(:any)'] 						= 'hal/detil/$1';
+
 $route['dashboard'] 						= 'siteman';
 $route['dashboards'] 					    = 'siteman/home';
 

@@ -3,7 +3,7 @@
 		<div class="breadcrumbs">
 			<ul>
 				<li><a href="<?=base_url()?>">Home</a></li>
-				<li><a href="<?=base_url().'post/indeks'?>">Post</a></li>
+				<li><a href="<?=base_url().'artikel/index'?>">Post</a></li>
 				<li>
 					<?php 
 						$tl = $this->uri->segment(3);

@@ -132,22 +132,7 @@ class Page extends CI_Controller {
 		logAct($this->session->userdata('id'),'Hapus Page',$dt['judul_page']);
 	}
 
-	function detil()
-	{
-		$seo   	= $this->uri->segment(3);
-		$where 	= array('seo_page'=>$seo,'aktif'=>'Y');
-		$query  = $this->model_app->view_where('t_page',$where);
-		if ($query->num_rows()<=0){
-			redirect('main');
-		}else{
-			$row = $query->row_array();
-			$data['title'] = $row['judul_page'];
-			$data['description'] = cetak($row['judul_page']);
-			$data['keywords'] = cetak_meta($row['judul_page'],0,150);
-			$data['row'] = $row;
-			$this->template->load('frontend/template','frontend/page_detil',$data);
-		}
-	}
+	
 
 	
 

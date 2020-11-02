@@ -15,10 +15,10 @@
 		?>
 		<li>
 			<div class="alignleft">
-				<a href="<?=base_url().'post/detil/'.$psd['seo_post']?>"><img src="<?=base_url().'assets/thumbnail/small/'.$psd['thumbnail_post']?>" alt=""></a>
+				<a href="<?=base_url().'artikel/detil/'.$psd['seo_post']?>"><img src="<?=base_url().'assets/thumbnail/small/'.$psd['thumbnail_post']?>" alt=""></a>
 			</div>
 			<small><span class="btn btn-success btn-sm"><?=$psd['nama_kategori']?></span> - <?=$this->mylibrary->tgl_indo($psd['created_on'])?></small>
-			<h3><a href="<?=base_url().'post/detil/'.$psd['seo_post']?>" title=""><?=htmlspecialchars_decode(html_entity_decode(cetak_meta($psd['isi_post'],0,100))) .'....'?></a></h3>
+			<h3><a href="<?=base_url().'artikel/detil/'.$psd['seo_post']?>" title=""><?=htmlspecialchars_decode(html_entity_decode(cetak_meta($psd['isi_post'],0,100))) .'....'?></a></h3>
 		</li>
 		<?php } ?>
 	</ul>
@@ -32,11 +32,11 @@
 		<?php 
 			$sql = "SELECT a.seo_kategori,a.nama_kategori,COUNT(b.id_kategori) AS jml 
 					FROM t_kategori a LEFT JOIN t_post b ON a.id_kategori=b.id_kategori
-					WHERE a.aktif = 'Y' AND b.publish = 'Y' AND a.jenis = 'artikel' AND a.seo_kategori != 'hightlight ' GROUP BY a.seo_kategori 
+					WHERE a.aktif = 'Y' AND b.publish = 'Y' AND a.jenis = 'artikel' GROUP BY a.seo_kategori 
 					ORDER BY b.id_kategori DESC";
 			$kt = $this->db->query($sql); 
 			foreach ($kt->result_array() as $k) {
-				echo "<li><a href='".base_url()."kategori/list/$k[seo_kategori]'>$k[nama_kategori]<span>($k[jml])</span></a></li>";
+				echo "<li><a href='".base_url()."category/index/$k[seo_kategori]'>$k[nama_kategori]<span>($k[jml])</span></a></li>";
 			}
 		?>
 	</ul>

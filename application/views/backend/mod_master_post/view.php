@@ -33,7 +33,7 @@
                             <td><center><?=$no?></center></td>
                             <td><?=$row['id_kategori']?></td>
                             <td><?=htmlspecialchars_decode(html_entity_decode($row['judul_post']))?></td>
-                            <td><a href="<?=base_url().'post/detil/'.$row['seo_post']?>" target="_blank"><?=base_url().'post/detil/'.$row['seo_post']?></a></td>
+                            <td><a href="<?=base_url().'artikel/detil/'.$row['seo_post']?>" target="_blank"><?=base_url().'post/detil/'.$row['seo_post']?></a></td>
                             <td>
                                 <center>
                                     <a href="<?=base_url().'post/ubah_post/'.$row['id_post'];?>" class="badge badge-success">

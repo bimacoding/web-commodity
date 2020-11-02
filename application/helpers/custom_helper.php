@@ -64,11 +64,11 @@
         
         $ci = & get_instance();
         // $result = array();
-        $induk = $ci->model_app->view_where_order('t_menu',array('id_parent'=>0,'position'=>'Side','aktif'=>'Ya','level_akses'=>'user'),'urutan','ASC');
+        $induk = $ci->model_app->view_where_order('t_front_menu',array('id_parent'=>0,'position'=>'Side','aktif'=>'Ya','level_akses'=>'user'),'urutan','ASC');
         $cek_menu = $induk->num_rows();
         if ($cek_menu > 0) {
             foreach ($induk->result() as $menu) {
-                $sub_induk = $ci->model_app->view_where_order('t_menu',array('id_parent'=>$menu->id_menu,'position'=>'Side','aktif'=>'Ya','level_akses'=>'user'),'urutan','ASC');
+                $sub_induk = $ci->model_app->view_where_order('t_front_menu',array('id_parent'=>$menu->id_menu,'position'=>'Side','aktif'=>'Ya','level_akses'=>'user'),'urutan','ASC');
                 $cek_submenu = $sub_induk->num_rows();
                 if ($cek_submenu > 0 ) {
                     foreach ($sub_induk->result() as $submenu) {

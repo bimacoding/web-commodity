@@ -120,6 +120,21 @@ class Model_utama extends CI_model{
         return $this->db->query($cari);
     }
 
+    function cari_product($kata){
+        $pisah_kata = explode(" ",$kata);
+        $jml_katakan = (integer)count($pisah_kata);
+        $jml_kata = $jml_katakan-1;
+        $cari = "SELECT * FROM t_product a WHERE a.publish_product='Y' AND";
+            for ($i=0; $i<=$jml_kata; $i++){
+              $cari .= " a.nama_product LIKE '%".$pisah_kata[$i]."%'";
+                if ($i < $jml_kata ){
+                    $cari .= " OR "; 
+                } 
+            }
+        $cari .= " ORDER BY a.id_product DESC LIMIT 12";
+        return $this->db->query($cari);
+    }
+
     public function insert($table,$data){
         return $this->db->insert($table, $data);
     }

@@ -21,19 +21,6 @@
             </div>
 
             <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Posisi Banner</label>
-                <div class="col-10">
-                    <select class="form-control" name="aktif">
-                        <option value="<?=$row['posisi_banner']?>"> <?=$row['posisi_banner']?> </option>
-                        <option value="top"> top </option>
-                        <option value="home"> home </option>
-                        <option value="sidebar"> sidebar </option>
-                        <option value="footer"> footer </option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
                 <label for="example-text-input" class="col-2 col-form-label">Aktif</label>
                 <div class="col-10">
                     <select class="form-control" name="aktif">
