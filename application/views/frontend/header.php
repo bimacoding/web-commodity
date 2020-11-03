@@ -22,17 +22,6 @@
                         <a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
                     </div>
                     <ul>
-                        <!-- <//?php  
-                            // $session = $this->session->userdata('level');
-                            $session = 'user';
-                            $cek = menu_manager_frontend($session);
-                            if ($cek !== 'null') {
-                                
-                            }else{
-                                $html = '';
-                                echo $html;
-                            }
-                        ?> -->
                         <?php
                         $cek = menu_user();
                         $menus = json_decode($cek);
@@ -54,6 +43,54 @@
                             }
                         }
                         echo $html;
+                        ?>
+                        <?php
+                        if ($this->session->userdata('level')=='penjual') {
+                            $ceks = menu_manager_frontend('penjual');
+                            $menuss = json_decode($ceks);
+                            $html = '';
+                            foreach ($menuss as $key) {
+                                if ($key->submenu==null) {
+                                    $html .="<li> 
+                                                <a href='".base_url().$key->link."'>" .$key->menu. "</a>
+                                            </li>";
+                                }else{
+                                    $html .="<li class='submenu'> 
+                                                    <a href='javascript:void(0);' class='show-submenu'>" .$key->menu. "</a>
+                                                    <ul>";
+                                                foreach ($key->submenu as $key2) {
+                                                   $html .=" <li> <a href='".base_url().$key2->sublink."'>" .$key2->submenu. "</a> </li>";
+                                                }
+                                           $html .="</ul>
+                                             </li>";
+                                }
+                            }
+                        echo $html;
+                        }else if ($this->session->userdata('level')=='pembeli') {
+                            $ceks = menu_manager_frontend('pembeli');
+                            $menuss = json_decode($ceks);
+                            $html = '';
+                            foreach ($menuss as $key) {
+                                if ($key->submenu==null) {
+                                    $html .="<li> 
+                                                <a href='".base_url().$key->link."'>" .$key->menu. "</a>
+                                            </li>";
+                                }else{
+                                    $html .="<li class='submenu'> 
+                                                    <a href='javascript:void(0);' class='show-submenu'>" .$key->menu. "</a>
+                                                    <ul>";
+                                                foreach ($key->submenu as $key2) {
+                                                   $html .=" <li> <a href='".base_url().$key2->sublink."'>" .$key2->submenu. "</a> </li>";
+                                                }
+                                           $html .="</ul>
+                                             </li>";
+                                }
+                            }
+                        echo $html;
+                        }else{
+                            echo "";
+                        }
+                        
                         ?>
                     </ul>
                 </div>
@@ -96,19 +133,33 @@
                         <div class="dropdown dropdown-access">
                             <a href="account.html" class="access_link"><span>Account</span></a>
                             <div class="dropdown-menu">
-                                <a href="account.html" class="btn_1">Sign In or Sign Up</a>
+                                <?php if ($this->session->userdata('level')!=='') { ?>
+                                  <a href="account.html" class="btn_1">Masuk / Daftar</a>  
+                                <?php } ?>
                                 <ul>
+                                    <?php if ($this->session->userdata('level')=='penjual') { ?>
+                                        <li>
+                                            <a href="<?=base_url()?>"><i class="ti-truck"></i>Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>"><i class="ti-package"></i>Produk Saya</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>"><i class="ti-user"></i>Profile</a>
+                                        </li>
+                                    <?php }else if ($this->session->userdata('level')=='pembeli') { ?>
+                                        <li>
+                                            <a href="<?=base_url()?>"><i class="ti-truck"></i>Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>"><i class="ti-package"></i>Pesanan Saya</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>"><i class="ti-user"></i>Profile</a>
+                                        </li>
+                                    <?php } ?>
                                     <li>
-                                        <a href="track-order.html"><i class="ti-truck"></i>Track your Order</a>
-                                    </li>
-                                    <li>
-                                        <a href="account.html"><i class="ti-package"></i>My Orders</a>
-                                    </li>
-                                    <li>
-                                        <a href="account.html"><i class="ti-user"></i>My Profile</a>
-                                    </li>
-                                    <li>
-                                        <a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
+                                        <a href="<?=base_url('hal/term--condition')?>"><i class="ti-help-alt"></i>Syarat & Ketentuan</a>
                                     </li>
                                 </ul>
                             </div>
