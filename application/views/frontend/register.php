@@ -19,7 +19,7 @@
 
 		<div class="col-md-9">
 			<div class="alert alert-success" role="alert">
-			  <?=$title?>
+			  Form pendaftaran <?= $this->uri->segment(2) ?>
 			</div>
 			<hr>
 			<center>
@@ -84,34 +84,13 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Level</label>
-                <div class="col-10">
-                    <select class="form-control" name="level">
-                        <option value="user">-- Pilih --</option>
-                        <option value="penjual"> penjual </option>
-                        <option value="pembeli"> pembeli </option>
-                        <option value="admin"> admin </option>
-                    </select>
-                    <small class="text-muted">default user</small>
-                </div>
-            </div>
+            <div class="alert alert-danger" role="alert">
+	          Dengan mengeklik tombol Mendaftar, Berarti Anda telah menyetujui <a href="#" target="_blank" >syarat dan Ketentuan</a> kami dan bahwa Anda telah membaca <a href="#" target="_blank" >Kebijakan</a> Data kami, termasuk Penggunaan Kuki... 
+	        </div>
 
-            <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Blokir</label>
-                <div class="col-10">
-                    <select class="form-control" name="blokir">
-                        <option value="N">-- Pilih --</option>
-                        <option value="N"> N </option>
-                        <option value="Y"> Y </option>
-                    </select>
-                    <small class="text-muted"> Default No / N</small>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="submit">Kirim</button>
-            <a href="<?=base_url().'pembeli'?>" class="btn btn-inverse waves-effect waves-light">Batal</a>
+            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="submit">Daftar</button>
         <?php echo form_close(); ?>
+	        
 		</div>
 
 		<div class="col-md-3">
