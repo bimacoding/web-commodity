@@ -164,4 +164,12 @@ class Model_utama extends CI_model{
             $this->db->update('statistik',$datadb);
         }
     }
+
+    public function cek_login_penjual($username,$passlain,$table){
+        return $this->db->query("SELECT * FROM $table where email='".$username."' AND password='".$this->db->escape_str($passlain)."' AND blokir = 'N'");
+    }
+
+     public function cek_login_pembeli($username,$passlain,$table){
+        return $this->db->query("SELECT * FROM $table where email='".$username."' AND password='".$this->db->escape_str($passlain)."' AND blokir = 'N'");
+    }
 }

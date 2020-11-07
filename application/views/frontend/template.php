@@ -17,12 +17,12 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="<?=base_url()?>template/img/apple-touch-icon-144x144-precomposed.png">
     <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- BASE CSS -->
+    <link href="<?=base_url()?>assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url()?>template/css/bootstrap.custom.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    
+    <link href="<?=base_url()?>template/css/custom.css" rel="stylesheet">
+
 	<!-- SPECIFIC CSS -->
     <link href="<?=base_url()?>template/css/home_1.css" rel="stylesheet">
     <link href="<?=base_url()?>template/css/cheatsheet.css" rel="stylesheet">
@@ -33,8 +33,13 @@
     <link href="<?=base_url()?>template/css/cart.css" rel="stylesheet">
     <link href="<?=base_url()?>template/css/style.css" rel="stylesheet">
     <!-- YOUR CUSTOM CSS -->
-    <link href="<?=base_url()?>template/css/custom.css" rel="stylesheet">
+    
     <link href="<?=base_url()?>template/css/grt-youtube-popup.css" rel="stylesheet">
+
+
+    <script src="<?=base_url()?>assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="<?=base_url()?>assets/bootstrap/dist/js/tether.min.js"></script>
+    <script src="<?=base_url()?>assets/bootstrap/dist/js/bootstrap.min.js"></script>
     
 
 </head>

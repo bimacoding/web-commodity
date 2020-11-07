@@ -14,44 +14,30 @@
 	.ui-group-buttons .btn:first-child{margin-left:0;border-top-left-radius:.25em;border-bottom-left-radius:.25em;padding-right:15px}
 	.ui-group-buttons .btn:last-child{border-top-right-radius:.25em;border-bottom-right-radius:.25em;padding-left:15px}
 </style>
-<div class="container margin_30 bg-light">
+<div class="container margin_30">
 	<div class="row">
 
-		<div class="col-md-9">
-			<div class="alert alert-success" role="alert">
-			  Form pendaftaran <?= $this->uri->segment(2) ?>
+		<div class="col-md-6 mb-5 border-right">
+			<?php if($this->session->flashdata('successAuth')){ ?>
+		        <div class="alert alert-success" role="alert">
+		            <?php echo $this->session->flashdata('success'); ?>
+		        </div>
+		    <?php }else if($this->session->flashdata('errorAuth')){  ?>
+		        <div class="alert alert-danger" role="alert">
+		            <?php echo $this->session->flashdata('error'); ?>
+		        </div>
+		    <?php } ?>
+			<div class="alert alert-dark text-dark" role="alert">
+			  Silahkan Login jika sudah memiliki akun.
 			</div>
 			<hr>
-			<center>
-				<div class="ui-group-buttons">
-	                <a href="<?=base_url('daftar/penjual')?>" class="btn btn-warning btn-sm text-uppercase">Daftar menjadi penjual</a>
-	                <div class="or or-sm"></div>
-	                <a href="<?=base_url('daftar/pembeli')?>" class="btn btn-success btn-sm text-uppercase">Daftar menjadi pembeli</a>
-	            </div>
-			</center>
-			<br>
-			<?php $attributes = array('class'=>'form-horizontal','role'=>'form','autocomplete'=>'off'); echo form_open_multipart('pembeli/tambah_pembeli',$attributes); ?>
-            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-            <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">NIK</label>
-                <div class="col-10">
-                    <input class="form-control" type="number" name="nik">
-                    <small class="text-muted">Masukan NIK sesuai KTP anda.</small>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Nama</label>
-                <div class="col-10">
-                    <input class="form-control" type="text" name="nama">
-                    <small class="text-muted">Masukan Nama jelas anda.</small>
-                </div>
-            </div>
+			<p> <span class="text-dark" style="font-weight: 600">Penting!!</span> Sebelum login pastikan email yang anda daftarkan sudah dikonfirmasi.</p>
+			<?php $attributes = array('class'=>'form-horizontal','role'=>'form','autocomplete'=>'off'); echo form_open('auth',$attributes); ?>
 
             <div class="form-group row">
                 <label for="example-text-input" class="col-2 col-form-label">Email</label>
                 <div class="col-10">
-                    <input class="form-control" type="email" name="email">
+                    <input class="form-control" type="email" name="email" placeholder="emailanda@gmail.com" value="<?=$this->session->userdata('level');?>">
                     <small class="text-muted">Masukan email valid anda</small>
                 </div>
             </div>
@@ -64,28 +50,169 @@
             </div>
 
             <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">No Hp</label>
+                <label for="example-text-input" class="col-2 col-form-label">Sebagai</label>
                 <div class="col-10">
-                    <input class="form-control" type="number" name="nohp">
+                    <div class="form-check pl-4">
+                      <input class="form-check-input" type="radio" name="akses" id="akses" value="penjual" />
+                      <label class="mr-5" for="akses">
+                        Penjual
+                      </label>
+                      <input class="form-check-input" type="radio" name="akses" id="akses" value="pembeli" />
+                      <label class="mr-5" for="akses">
+                        Pembeli
+                      </label>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Alamat</label>
+                <label for="example-text-input" class="col-2 col-form-label"></label>
                 <div class="col-10">
-                    <input class="form-control" type="text" name="alamat">
+                    <input type='number' value='<?=rand(1,20);?>' name='angka1' autocomplete=off readonly style="width: 50px;"> + 
+					<input type='number' value='<?=rand(1,20);?>' name='angka2' autocomplete=off  readonly style="width: 50px;"> = 
+					<input type='number' name='c' placeholder='Jawaban' autocomplete=off required style="width: 100px;">
+					<br>
+					<small class="text-muted">Masukan jawaban dengan benar dari hasil penjumlahan diatas.</small>
+                </div>
+            </div>
+
+            
+
+             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="submit">Masuk</button>
+
+            <?php 	echo form_close(); ?>
+
+		</div>
+
+		<div class="col-md-6">
+			<div class="alert alert-success" role="alert">
+			  Form pendaftaran <strong><?= $this->input->get('page'); ?></strong>
+			</div>
+			<?php if($this->session->flashdata('success')){ ?>
+		        <div class="alert alert-success" role="alert">
+		            <?php echo $this->session->flashdata('success'); ?>
+		        </div>
+		    <?php }else if($this->session->flashdata('error')){  ?>
+		        <div class="alert alert-danger" role="alert">
+		            <?php echo $this->session->flashdata('error'); ?>
+		        </div>
+		    <?php } ?>
+			<hr>
+			<center>
+				<div class="ui-group-buttons">
+	                <a href="<?=base_url('auth?page=penjual')?>" class="btn btn-warning btn-sm text-uppercase">Penjual</a>
+	                <div class="or or-sm"></div>
+	                <a href="<?=base_url('auth?page=pembeli')?>" class="btn btn-success btn-sm text-uppercase">Pembeli</a>
+	            </div>
+			</center>
+			<br>
+			<?php $links = 'auth/'.$this->input->get('page'); $attributes = array('class'=>'form-horizontal','role'=>'form','autocomplete'=>'off'); echo form_open_multipart($links,$attributes); ?>
+            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+
+            <div class="form-group row">
+                <label for="example-text-input" class="col-3 col-form-label">NIK <sup class="text-danger">*</sup></label>
+                <div class="col-9">
+                    <input class="form-control" type="text" name="nik" required minlength="16" maxlength="23">
+                    <small class="text-muted">Masukan NIK sesuai KTP anda.</small>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Foto</label>
-                <div class="col-10">
-                    <input class="form-control" type="file" name="foto">
+                <label for="example-text-input" class="col-3 col-form-label">Nama <sup class="text-danger">*</sup></label>
+                <div class="col-9">
+                    <input class="form-control" type="text" name="nama" required>
+                    <small class="text-muted">Wajib Masukan Nama jelas anda sesuai KTP atau KTA anda.</small>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-text-input" class="col-3 col-form-label">Email <sup class="text-danger">*</sup></label>
+                <div class="col-9">
+                    <input class="form-control" type="email" name="email" required>
+                    <small class="text-muted">Masukan email valid anda</small>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-text-input" class="col-3 col-form-label">Password <sup class="text-danger">*</sup></label>
+                <div class="col-9">
+                    <input class="form-control" type="password" name="password" required>
+                </div>
+            </div>
+
+            <?php if ($this->input->get('page')=='penjual') { ?>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-3 col-form-label">Foto KTA <sup class="text-danger">*</sup></label>
+                    <div class="col-9">
+                        <input class="form-control" type="file" name="kta" required>
+                        <small class="text-danger"><strong>Penting!!</strong> Upload foto bukti anda adalah pekerja, pemilik, atau pengurus suatu anggota, asosiasi dan perusahaan.</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-3 col-form-label">Foto Organisasi <sup class="text-danger">*</sup></label>
+                    <div class="col-9">
+                        <input class="form-control" type="file" name="organisasi" required>
+                        <small class="text-danger"><strong>Penting!!</strong> Upload foto bukti anda bersal dari perusahaan, asosiasi atau dari suatu perusahaan.</small>
+                    </div>
+                </div>
+            <?php }else{ ?>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-3 col-form-label">Foto KTA <sup class="text-danger">*</sup></label>
+                    <div class="col-9">
+                        <input class="form-control" type="file" name="kta" required>
+                        <small class="text-danger"><strong>Penting!!</strong> Upload foto bukti anda adalah pekerja, pemilik, atau pengurus suatu anggota, asosiasi dan perusahaan.</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-3 col-form-label">Foto NIB <sup class="text-danger">*</sup></label>
+                    <div class="col-9">
+                        <input class="form-control" type="file" name="nib" required>
+                        <small class="text-danger"><strong>Penting!!</strong> Upload foto bukti Nomor Induk Berusaha segabagai bukti anda adalah pelaku usaha dalam rangka pelaksanaan kegiatan berusaha sesuai dengan bidang usahanya.</small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                <label for="example-text-input" class="col-3 col-form-label">Warganegara</label>
+                <div class="col-9">
+                    <div class="form-check pl-4">
+                      <input class="form-check-input" type="radio" name="warganegara" id="warganegara" value="WNI" required />
+                      <label class="mr-5" for="warganegara">
+                        WNI
+                      </label>
+                      <input class="form-check-input" type="radio" name="warganegara" id="warganegara" value="WNA" required />
+                      <label class="mr-5" for="warganegara">
+                        WNA
+                      </label>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+
+            <div class="form-group row">
+                <label for="example-text-input" class="col-3 col-form-label">No Hp <sup class="text-danger">*</sup></label>
+                <div class="col-9">
+                    <input class="form-control" type="number" name="nohp" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-text-input" class="col-3 col-form-label">Foto <sup class="text-danger">*</sup></label>
+                <div class="col-9">
+                    <input class="form-control" type="file" name="foto" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-text-input" class="col-3 col-form-label">Alamat <sup class="text-danger">*</sup></label>
+                <div class="col-9">
+                    <textarea class="form-control" name="alamat" required placeholder="alamat perusahaan, organisasi, atau asosiasi anda"></textarea>
                 </div>
             </div>
 
             <div class="alert alert-danger" role="alert">
-	          Dengan mengeklik tombol Mendaftar, Berarti Anda telah menyetujui <a href="#" target="_blank" >syarat dan Ketentuan</a> kami dan bahwa Anda telah membaca <a href="#" target="_blank" >Kebijakan</a> Data kami, termasuk Penggunaan Kuki... 
+	          Dengan mengeklik tombol Mendaftar, Berarti Anda telah menyetujui <a href="<?=base_url('hal/syarat-dan-ketentuan')?>" target="_blank" >syarat dan Ketentuan</a> kami dan bahwa Anda telah membaca <a href="<?=base_url('hal/kebijakan-privasi')?>" target="_blank" >Kebijakan</a> Data kami, termasuk Penggunaan Kuki... 
 	        </div>
 
             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="submit">Daftar</button>
@@ -93,9 +220,7 @@
 	        
 		</div>
 
-		<div class="col-md-3">
-			
-		</div>
+		
 
 	</div>
 </div>

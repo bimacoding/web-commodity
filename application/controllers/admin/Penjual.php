@@ -48,6 +48,7 @@ class Penjual extends CI_Controller {
 
 			if ($hasil['file_name']=='') {
 				$data = array(
+						'kode' => $this->mylibrary->kdauto('t_penjual','id_penjual','PDG'),
 						'nik' => $this->db->escape_str($this->input->post('nik')),
 						'nama' => $this->db->escape_str($this->input->post('nama')),
 						'email' => $this->db->escape_str($this->input->post('email')),
@@ -56,10 +57,12 @@ class Penjual extends CI_Controller {
 						'alamat' => $this->db->escape_str($this->input->post('alamat')),
 						'foto' => 'no-image.png',
 						'qrcode' => $image_name,
-						'blokir'=>$this->db->escape_str($this->input->post('blokir'))
+						'blokir'=>$this->db->escape_str($this->input->post('blokir')),
+						'join' => date('Y-m-d H:i:s')
 					); 
 			}else{
 				$data = array(
+						'kode' => $this->mylibrary->kdauto('t_penjual','id_penjual','PDG'),
 						'nik' => $this->db->escape_str($this->input->post('nik')),
 						'nama' => $this->db->escape_str($this->input->post('nama')),
 						'email' => $this->db->escape_str($this->input->post('email')),
@@ -70,7 +73,8 @@ class Penjual extends CI_Controller {
 						'organisasi' => $this->input->post('organisasi'),
 						'kta'=> $this->input->post('kta'),
 						'qrcode' => $image_name,
-						'blokir'=>$this->db->escape_str($this->input->post('blokir'))
+						'blokir'=>$this->db->escape_str($this->input->post('blokir')),
+						'join' => date('Y-m-d H:i:s')
 					);
 			}
 

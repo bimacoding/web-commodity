@@ -44,54 +44,7 @@
                         }
                         echo $html;
                         ?>
-                        <?php
-                        if ($this->session->userdata('level')=='penjual') {
-                            $ceks = menu_manager_frontend('penjual');
-                            $menuss = json_decode($ceks);
-                            $html = '';
-                            foreach ($menuss as $key) {
-                                if ($key->submenu==null) {
-                                    $html .="<li> 
-                                                <a href='".base_url().$key->link."'>" .$key->menu. "</a>
-                                            </li>";
-                                }else{
-                                    $html .="<li class='submenu'> 
-                                                    <a href='javascript:void(0);' class='show-submenu'>" .$key->menu. "</a>
-                                                    <ul>";
-                                                foreach ($key->submenu as $key2) {
-                                                   $html .=" <li> <a href='".base_url().$key2->sublink."'>" .$key2->submenu. "</a> </li>";
-                                                }
-                                           $html .="</ul>
-                                             </li>";
-                                }
-                            }
-                        echo $html;
-                        }else if ($this->session->userdata('level')=='pembeli') {
-                            $ceks = menu_manager_frontend('pembeli');
-                            $menuss = json_decode($ceks);
-                            $html = '';
-                            foreach ($menuss as $key) {
-                                if ($key->submenu==null) {
-                                    $html .="<li> 
-                                                <a href='".base_url().$key->link."'>" .$key->menu. "</a>
-                                            </li>";
-                                }else{
-                                    $html .="<li class='submenu'> 
-                                                    <a href='javascript:void(0);' class='show-submenu'>" .$key->menu. "</a>
-                                                    <ul>";
-                                                foreach ($key->submenu as $key2) {
-                                                   $html .=" <li> <a href='".base_url().$key2->sublink."'>" .$key2->submenu. "</a> </li>";
-                                                }
-                                           $html .="</ul>
-                                             </li>";
-                                }
-                            }
-                        echo $html;
-                        }else{
-                            echo "";
-                        }
                         
-                        ?>
                     </ul>
                 </div>
                 <!--/main-menu -->
@@ -134,7 +87,7 @@
                             <a href="account.html" class="access_link"><span>Account</span></a>
                             <div class="dropdown-menu">
                                 <?php if ($this->session->userdata('level')!=='') { ?>
-                                  <a href="account.html" class="btn_1">Masuk / Daftar</a>  
+                                  <a href="<?=base_url('auth?page=penjual')?>" class="btn_1">Masuk / Daftar</a>  
                                 <?php } ?>
                                 <ul>
                                     <?php if ($this->session->userdata('level')=='penjual') { ?>
@@ -159,7 +112,7 @@
                                         </li>
                                     <?php } ?>
                                     <li>
-                                        <a href="<?=base_url('hal/term--condition')?>"><i class="ti-help-alt"></i>Syarat & Ketentuan</a>
+                                        <a href="<?=base_url('hal/syarat-dan-ketentuan')?>"><i class="ti-help-alt"></i>Syarat & Ketentuan</a>
                                     </li>
                                 </ul>
                             </div>

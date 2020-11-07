@@ -140,3 +140,20 @@
             redirect(base_url());
         }
     }
+
+
+    function cek_session_penjual(){
+        $ci = & get_instance();
+        $session = $ci->session->userdata('level');;
+        if ($session !== 'penjual'){
+            redirect(base_url('/auth'));
+        }
+    }
+
+    function cek_session_pembeli(){
+        $ci = & get_instance();
+        $session = $ci->session->userdata('level');;
+        if ($session !== 'pembeli'){
+            redirect(base_url('/auth'));
+        }
+    }
